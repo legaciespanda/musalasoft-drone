@@ -13,4 +13,6 @@ public interface DroneRepository extends JpaRepository<Drone, Long> {
     Optional<Drone> findByBatteryCapacity(String droneSerial);
 
     List<Drone> findByState(String state);
+
+    Optional<Drone> findBySerial(String droneSerial);
 }

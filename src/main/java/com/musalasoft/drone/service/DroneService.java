@@ -30,7 +30,7 @@ public class DroneService {
 
     //accepts drone serial number and return the battery capacity
     public Optional<Drone> droneBatteryLevel(String droneSerial){
-        return droneRepository.findByBatteryCapacity(droneSerial);
+        return droneRepository.findBySerial(droneSerial);
     }
 
 
