@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
@@ -18,28 +19,28 @@ import java.time.LocalDateTime;
 public class Medication {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "medication_id", nullable = false)
     private Long medicationId;
 
     @NotBlank(message = "medication name is required")
+    @Column(name = "name", nullable = false)
     private String name;
+
     @NotBlank(message = "medication weight is required")
-    private String weight;
+    @Column(name = "weight", nullable = false)
+    private int weight;
+
     @NotBlank(message = "medication code is required")
+    @Column(name = "code", nullable = false)
     private String code;
+
+    @Column(name = "image", nullable = false)
     @NotBlank(message = "medication picture is required")
     private String image;
 
-//    @Column(updatable = false)
-//    @CreationTimestamp
-//    private LocalDateTime createdAt;
-//    @UpdateTimestamp
-//    private LocalDateTime updatedAt;
+    @Column(name = "drone_serial", nullable = false)
+    @NotBlank(message = "drone serial number is required")
+    private String droneSerial;
 
-
-    // “many” medications records map to “one” drone record.
-    @JoinColumn(name = "droneId")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Drone drone;
 
 }

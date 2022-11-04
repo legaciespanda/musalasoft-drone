@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -40,5 +39,8 @@ public class Drone {
     @Column(name = "state", nullable = false)
     @NotNull(message = "State is required")
     private String state;
+
+//    @OneToMany(mappedBy = "drone")
+//    private List<Medication> medications;
 
 }

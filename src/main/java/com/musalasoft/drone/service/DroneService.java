@@ -28,8 +28,12 @@ public class DroneService {
         return droneRepository.findByState(state);
     }
 
+    public List<Drone> getAllDrones(){
+        return droneRepository.findAll();
+    }
+
     //accepts drone serial number and return the battery capacity
-    public Optional<Drone> droneBatteryLevel(String droneSerial){
+    public Optional<Drone> getDroneData(String droneSerial){
         return droneRepository.findBySerial(droneSerial);
     }
 

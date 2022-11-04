@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class CustomResponseEntityException {
-    @ExceptionHandler
-    public ResponseEntity<ApiResponse> handle(ConstraintViolationException constraintViolationException){
-        String errorMessage = new ArrayList<>(constraintViolationException.getConstraintViolations()).get(0).getMessage();
-        ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setResponseMessage(errorMessage);
-        return new ResponseEntity<>(apiResponse, null, HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<ApiResponse> handle(ConstraintViolationException constraintViolationException){
+//        String errorMessage = new ArrayList<>(constraintViolationException.getConstraintViolations()).get(0).getMessage();
+//        ApiResponse apiResponse = new ApiResponse();
+//        apiResponse.setResponseMessage(errorMessage);
+//        return new ResponseEntity<>(apiResponse, null, HttpStatus.BAD_REQUEST);
+//    }
 }

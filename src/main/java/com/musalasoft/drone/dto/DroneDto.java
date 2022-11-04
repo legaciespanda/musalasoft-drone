@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Data
 public class DroneDto implements Serializable {
-//    private final Long droneId;
+
     @NotNull
     @Min(value = 100) //drone serial must not be more than 100 charcters
     private final String serial;

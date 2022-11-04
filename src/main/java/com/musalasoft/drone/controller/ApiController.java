@@ -31,6 +31,8 @@ public class ApiController {
     @RequestMapping(path = "/musalasoft/drone", method = RequestMethod.POST)
     private ResponseEntity<Object> registerDrone(@Valid @RequestBody DroneDto droneDto){
 
+        Optional<Drone> droneSerial = droneService.getDroneData(droneDto.getSerial());
+
         //drone states must be in uppercase
         String droneState = droneDto.getState().toUpperCase();
 
@@ -43,6 +45,10 @@ public class ApiController {
 
        LOGGER.info("Drone Registered" + drone);
         try {
+            //prevent registering drone with same serial number
+            if(droneSerial.isPresent()){
+                return ResponseHandler.generateResponse("Drone with Serial - "+droneDto.getSerial()+ " has already been registered", HttpStatus.BAD_REQUEST, null);
+            }
             droneService.registerDrone(drone);
             return ResponseHandler.generateResponse("Drone Registered Successfully!", HttpStatus.OK, drone);
         } catch (Exception e) {
@@ -69,7 +75,7 @@ public class ApiController {
     @RequestMapping(path = "/musalasoft/drone/battery-level", method = RequestMethod.GET)
     private ResponseEntity<Object> droneBatteryLevel(@RequestParam(required = false, name = "serial") String serial){
         //checking available drones for loading using their drone serial number
-        Optional<Drone> drone = droneService.droneBatteryLevel(serial);
+        Optional<Drone> drone = droneService.getDroneData(serial);
 
         try {
             //check if drone with serial number exist
