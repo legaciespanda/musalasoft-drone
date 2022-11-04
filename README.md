@@ -104,5 +104,46 @@ Returns battery level/capacity for a given drone with serial number in JSON form
 
 
 ### MEDICATION API Endpoint
+- Endpoint http://localhost:2023/api/v1/musalasoft/medication/
+- Method - POST
+- Response - JSON
+
+Each **Medication** has:
+- name (allowed only letters, numbers, ‘-‘, ‘_’); DONE
+- weight;
+- code (allowed only upper case letters, underscore and numbers); DONE
+- image (picture of the medication case).
+
+ **NOTE** Medication might be loaded 
+ if drone serial number is not found
+
+ Using formdata in POSTMAN you to supply required keys and values
+
+- **name** (Medication name)
+- **weight** (Medication weight)
+- **code** (Medication weight)
+- **image** (Medication image)
+- **droneSerial** (Drone serial number to be associated with the medication)
+
+
+**RESPONSE RESULT**
+
+```
+{
+    "data": {
+        "medicationId": 1,
+        "name": "Antibiotics-12",
+        "weight": 20,
+        "code": "COME_GH45",
+        "image": "image.png",
+        "droneSerial": "12345678"
+    },
+    "message": "Medication loaded for drone with serial 12345678",
+    "status": 200
+}
+```
+
+
+---
 
 :scroll: **END**
