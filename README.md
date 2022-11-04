@@ -16,7 +16,9 @@ Useful drone functions include delivery of small items that are (urgently) neede
 ---
 
 ### Task
-REST API that allows clients to communicate with the drones
+REST API that allows clients to communicate with the drones (i.e. **dispatch controller**). The specific communicaiton with the drone is outside the scope of this task.
+
+We have a fleet of **10 drones**. A drone is capable of carrying devices, other than cameras, and capable of delivering small loads. For our use case **the load is medications**.
 
 #### Functional requirements
 
